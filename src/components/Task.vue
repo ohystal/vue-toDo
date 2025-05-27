@@ -4,6 +4,14 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  isFirst: {
+    type: Boolean,
+    default: false,
+  },
+  isLast: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const emit = defineEmits(["remove", "complete", "upTask", "downTask"]);
@@ -43,7 +51,7 @@ const handleDown = () => {
         :checked="item.completed"
         @change="handleComplete"
       />
-      <button @click="handleUp">
+      <button @click="handleUp" v-if="!isFirst">
         <img
           src="../assets/arrow.png"
           alt="стрелка вверх"
@@ -51,7 +59,7 @@ const handleDown = () => {
           height="20px"
         />
       </button>
-      <button @click="handleDown">
+      <button @click="handleDown" v-if="!isLast">
         <img
           class="rotate-[-180deg]"
           src="../assets/arrow.png"

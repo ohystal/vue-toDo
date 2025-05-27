@@ -51,10 +51,12 @@ const handleDownTask =({item}) => {
   <div class="flex flex-col h-[300px]">
     <h2 class="text-3xl font-bold 3 underline mb-2 text-left">ToDo</h2>
     <ul class="my-auto max-h-[300px] overflow-y-scroll">
-      <li class="max-h-full" v-for="item in pendingTasks" :key="item.id">
+      <li class="max-h-full" v-for="(item, index) in pendingTasks" :key="item.id">
         <Task
           :item="item"
           :title="item.title"
+          :isLast="index === pendingTasks.length - 1"
+          :isFirst="index === 0"
           @remove="removeItem"
           @complete="isChecked"
           @upTask="handleUpTask"
@@ -66,10 +68,12 @@ const handleDownTask =({item}) => {
   <Form @onSubmit="handleSubmit" />
   <div class="flex flex-col h-[300px]">
     <ul class="my-auto max-h-[300px] overflow-y-scroll">
-      <li class="max-h-full" v-for="item in completeTasks" :key="item.id">
+      <li class="max-h-full" v-for="(item, index) in completeTasks" :key="item.id">
         <Task
           :item="item"
           :title="item.title"
+          :isLast="index === completeTasks.length - 1"
+          :isFirst="index === 0"
           @remove="removeItem"
           @complete="isChecked"
           @upTask="handleUpTask"

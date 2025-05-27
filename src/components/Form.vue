@@ -7,7 +7,7 @@ const title = ref('')
 
 const onSubmit = () => {
   emit("onSubmit", {
-    id: Math.round(Math.random() * 30),
+    id: Date.now(),
     title: title.value,
   });
   title.value = "";
