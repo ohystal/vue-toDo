@@ -23,6 +23,6 @@ const onSubmit = () => {
       required
       placeholder="Enter task"
     />
-    <button class="" type="submit">Add Task</button>
+    <button type="submit">Add Task</button>
   </form>
 </template>
